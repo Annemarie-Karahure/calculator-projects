@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Project</title>
+
+<style>
+  /* CSS Styles */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type="number"],
+  select {
+    padding: 5px;
+    width: 150px;
+    margin-bottom: 10px;
+  }
+
+  input[type="button"] {
+    padding: 8px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type="button"]:hover {
+    background-color: #2980b9;
+  }
+
+  #result {
+    width: 154px;
+    padding: 5px;
+  }
+</style>
+
+</head>
+<body>
+  <!-- simple calculator -->
+
+  <!-- Label and input for the first value -->
+  <label for="value1">Enter value 1:</label>
+  <input type="number" id="value1">
+  <br/><br/>
+
+  <!-- Label and input for the second value -->
+  <label for="value2">Enter Value 2:</label>
+  <input type="number" id="value2">
+  <br/><br/>
+
+  <!-- Select element for choosing the mathematical operation -->
+  <label for="math">Choose an operation:</label>
+  <select name="math" id="math" onchange="calculate()">
+    <!-- Group for addition and subtraction operations -->
+    <optgroup label="Add and Subtract">
+      <option value="add">+</option>
+      <option value="sub">−</option>
+    </optgroup>
+    <!-- Group for division and multiplication operations -->
+    <optgroup label="Divide and Multiply">
+      <option value="div">÷</option>
+      <option value="mult">×</option>
+    </optgroup>
+  </select>
+  <!-- Button to trigger calculation -->
+  <input type="button" value="Calculate" onclick="calculate()">
+  <br><br/>
+
+  <!-- Displaying the result -->
+  <label for="result">Result:</label>
+  <input type="number" id="result" name="result">
+
+  <!-- JavaScript code -->
+  <script>
+    // Function to perform calculations
+    function calculate() {
+      // Get the value of the first input field and convert it to an integer
+      var num1 = parseInt(document.getElementById("value1").value);
+      // Get the value of the second input field and convert it to an integer
+      var num2 = parseInt(document.getElementById("value2").value);
+      // Get the selected operation from the dropdown
+      var math = document.getElementById("math").value;
+      // Variable to hold the result of the calculation
+      var result;
+
+      // Switch statement to perform different operations based on the selected operation
+      switch (math) {
+        case "add":
+          // Addition operation
+          result = num1 + num2;
+          break;
+        case "sub":
+          // Subtraction operation
+          result = num1 - num2;
+          break;
+        case "div":
+          // Division operation
+          result = num1 / num2;
+          break;
+        case "mult":
+          // Multiplication operation
+          result = num1 * num2;
+          break;
+        default:
+          // Handling an invalid operation
+          result = "Invalid operation";
+      }
+
+      // Display the result in the designated input field
+      document.getElementById("result").value = result;
+    }
+  </script>
+</body>
+</html>
